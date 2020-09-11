@@ -41,6 +41,7 @@ func NewHandler(imgSvc ImgService, fileCache FileCache, store *storage.Storage, 
 	users := api.PathPrefix("/users").Subrouter()
 	users.Handle("", monkey(usersGetHandler, "")).Methods("GET")
 	users.Handle("", monkey(userPostHandler, "")).Methods("POST")
+	users.Handle("/autologin", monkey(userAutologinHandler, "")).Methods("GET")
 	users.Handle("/{id:[0-9]+}", monkey(userPutHandler, "")).Methods("PUT")
 	users.Handle("/{id:[0-9]+}", monkey(userGetHandler, "")).Methods("GET")
 	users.Handle("/{id:[0-9]+}", monkey(userDeleteHandler, "")).Methods("DELETE")

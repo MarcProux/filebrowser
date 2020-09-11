@@ -62,6 +62,25 @@ func withSelfOrAdmin(fn handleFunc) handleFunc {
 	})
 }
 
+var userAutologinHandler = func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
+	user, err := d.store.Users.Gets(d.server.Root)
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+
+	type userResult struct {
+		Username string `json:"username"`
+	}
+	var results []userResult
+	for _, u := range user {
+		if u.Autologin {
+			results = append(results, userResult{Username: u.Username})
+		}
+	}
+
+	return renderJSON(w, r, results)
+}
+
 var usersGetHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	users, err := d.store.Users.Gets(d.server.Root)
 	if err != nil {
@@ -112,7 +131,7 @@ var userPostHandler = withAdmin(func(w http.ResponseWriter, r *http.Request, d *
 		return http.StatusBadRequest, nil
 	}
 
-	if req.Data.Password == "" {
+	if req.Data.Password == "" && !req.Data.Autologin {
 		return http.StatusBadRequest, errors.ErrEmptyPassword
 	}
 

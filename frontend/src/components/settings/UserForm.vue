@@ -7,7 +7,8 @@
 
     <p v-if="!isDefault">
       <label for="password">{{ $t('settings.password') }}</label>
-      <input class="input input--block" type="password" :placeholder="passwordPlaceholder" v-model="user.password" id="password">
+      <input class="input input--block" type="password" :disabled="user.autologin" :placeholder="passwordPlaceholder" v-model="user.password" id="password">
+      <input type="checkbox" v-model="user.autologin"> {{ $t('settings.autologin') }}
     </p>
 
     <p>
@@ -42,7 +43,7 @@ import Permissions from './Permissions'
 import Commands from './Commands'
 
 export default {
-  name: 'user',
+name: 'user',
   components: {
     Permissions,
     Languages,
@@ -59,6 +60,10 @@ export default {
     'user.perm.admin': function () {
       if (!this.user.perm.admin) return
       this.user.lockPassword = false
+    },
+    'user.autologin': function () {
+      if (!this.user.autologin) return
+      this.user.password = ""
     }
   }
 }

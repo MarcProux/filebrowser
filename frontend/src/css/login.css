@@ -20,15 +20,6 @@
   margin: .4em 0 .67em;
 }
 
-#login form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 16em;
-  width: 90%;
-}
-
 #login.recaptcha form {
   min-width: 304px;
 }
@@ -62,4 +53,44 @@
   font-weight: 500;
   font-size: 0.9rem;
   margin: .5rem 0;
+}
+
+#login .auto .items, #login .auto .items form {
+  width: 100%;
+  padding: 0;
+}
+
+#login .auto, #login form {
+  vertical-align: top;
+  text-align: center;
+  width: calc(50% - .5px);
+  padding: .5em 1em; 
+}
+
+#login .main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 48em;
+  width: 90%;
+}
+
+#login .main div, #login .main form {
+  display: inline-block;
+}
+
+#login .card {
+  width: 100%;
+  box-shadow: none; 
+}
+
+#login .divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  padding: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, .5)
 }

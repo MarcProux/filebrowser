@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "8000:8000"
+    volumes:
+      - "..:/workspace:cached"
+    command: tail -f /dev/null
+      

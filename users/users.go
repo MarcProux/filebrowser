@@ -33,6 +33,7 @@ type User struct {
 	Sorting      files.Sorting `json:"sorting"`
 	Fs           afero.Fs      `json:"-" yaml:"-"`
 	Rules        []rules.Rule  `json:"rules"`
+	Autologin    bool          `json:"autologin"`
 }
 
 // GetRules implements rules.Provider.
@@ -65,7 +66,7 @@ func (u *User) Clean(baseScope string, fields ...string) error {
 				return errors.ErrEmptyUsername
 			}
 		case "Password":
-			if u.Password == "" {
+			if u.Password == "" && !u.Autologin {
 				return errors.ErrEmptyPassword
 			}
 		case "ViewMode":
