@@ -1,5 +1,9 @@
 import { fetchURL, fetchJSON } from './utils'
 
+export async function getAllAutologin () {
+  return fetchJSON(`/api/users/autologin`, {})
+}
+
 export async function getAll () {
   return fetchJSON(`/api/users`, {})
 }
