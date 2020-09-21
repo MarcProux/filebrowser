@@ -11,7 +11,7 @@ build:
   env:
     - CGO_ENABLED=0
   ldflags:
-    - -s -w -X github.com/filebrowser/filebrowser/v2/version.Version={{ .Version }} -X github.com/filebrowser/filebrowser/v2/version.CommitSHA={{ .ShortCommit }}
+    - -s -w -X github.com/MarcProux/filebrowser/v2/version.Version={{ .Version }} -X github.com/daethe/daethe/v2/version.CommitSHA={{ .ShortCommit }}
   main: main.go
   binary: filebrowser
   goos:
@@ -61,9 +61,9 @@ dockers:
     goarch: amd64
     goarm: ''
     image_templates:
-      - "filebrowser/filebrowser:latest"
-      - "filebrowser/filebrowser:{{ .Tag }}"
-      - "filebrowser/filebrowser:v{{ .Major }}"
+      - "daethe/filebrowser:latest"
+      - "daethe/filebrowser:{{ .Tag }}"
+      - "daethe/filebrowser:v{{ .Major }}"
     extra_files:
       - .docker.json
   -
@@ -74,9 +74,9 @@ dockers:
     goarch: arm
     goarm: '5'
     image_templates:
-      - "filebrowser/filebrowser:pi"
-      - "filebrowser/filebrowser:{{ .Tag }}-pi"
-      - "filebrowser/filebrowser:v{{ .Major }}-pi"
+      - "daethe/filebrowser:pi"
+      - "daethe/filebrowser:{{ .Tag }}-pi"
+      - "daethe/filebrowser:v{{ .Major }}-pi"
     extra_files:
       - .docker.json
   -
@@ -87,9 +87,9 @@ dockers:
     goarch: amd64
     goarm: ''
     image_templates:
-      - "filebrowser/filebrowser:alpine"
-      - "filebrowser/filebrowser:{{ .Tag }}-alpine"
-      - "filebrowser/filebrowser:v{{ .Major }}-alpine"
+      - "daethe/filebrowser:alpine"
+      - "daethe/filebrowser:{{ .Tag }}-alpine"
+      - "daethe/filebrowser:v{{ .Major }}-alpine"
     extra_files:
       - .docker.json
   -
@@ -100,8 +100,8 @@ dockers:
     goarch: amd64
     goarm: ''
     image_templates:
-      - "filebrowser/filebrowser:debian"
-      - "filebrowser/filebrowser:{{ .Tag }}-debian"
-      - "filebrowser/filebrowser:v{{ .Major }}-debian"
+      - "daethe/filebrowser:debian"
+      - "daethe/filebrowser:{{ .Tag }}-debian"
+      - "daethe/filebrowser:v{{ .Major }}-debian"
     extra_files:
       - .docker.json
