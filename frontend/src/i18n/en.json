@@ -188,7 +188,8 @@
       "execute": "Execute commands",
       "rename": "Rename or move files and directories",
       "share": "Share files"
-    }
+    },
+    "autologin": "Use autologin functionnality ?"
   },
   "sidebar": {
     "help": "Help",

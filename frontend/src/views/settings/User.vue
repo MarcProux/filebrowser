@@ -127,6 +127,7 @@ export default {
 
       try {
         if (this.isNew) {
+          console.log(user)
           const loc = await api.create(user)
           this.$router.push({ path: loc })
           this.$showSuccess(this.$t('settings.userCreated'))
